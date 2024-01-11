@@ -21,7 +21,7 @@ jobs:
     - name: Build and tag Docker image
       run: |
         sudo -S docker build -t venky08 .
-        sudo -S docker save venky08:latest | gzip > mywebsite08.tar.gz
+        sudo -S docker save venky08:latest | gzip > venky08.tar.gz
    
 
     - name: Transfer Docker image to EC2
@@ -51,8 +51,8 @@ jobs:
 
         # SSH and Docker commands to run on EC2
         ssh -i ~/.ssh/id_rsa ubuntu@$HOST '
-          sudo -S docker load < /tmp/mywebsite08.tar.gz
-          sudo -S docker stop mywebsite08 || true
-          sudo -S docker rm mywebsite08 || true
-          sudo -S docker run -itd -p 8082:80 mywebsite08:latest
+          sudo -S docker load < /tmp/venky08.tar.gz
+          sudo -S docker stop venky08 || true
+          sudo -S docker rm venky08 || true
+          sudo -S docker run -itd -p 8082:80 venky08:latest
         '
