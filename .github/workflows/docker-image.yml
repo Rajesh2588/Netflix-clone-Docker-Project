@@ -20,7 +20,7 @@ jobs:
   
     - name: Build and tag Docker image
       run: |
-        sudo -S docker build -t mywebsite08 .
+        sudo -S docker build -t rajesh .
         sudo -S docker save rajesh:latest | gzip > rajesh.tar.gz
    
 
